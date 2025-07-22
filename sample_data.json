@@ -1,0 +1,122 @@
+{
+  "nodes": [
+    {
+      "id": "Python",
+      "group": "core",
+      "size": 40,
+      "color": "#dc3545"
+    },
+    {
+      "id": "基础语法",
+      "group": "basic",
+      "size": 25,
+      "color": "#17a2b8"
+    },
+    {
+      "id": "数据类型",
+      "group": "basic",
+      "size": 15,
+      "color": "#28a745"
+    },
+    {
+      "id": "控制结构",
+      "group": "basic",
+      "size": 15,
+      "color": "#28a745"
+    },
+    {
+      "id": "函数",
+      "group": "basic",
+      "size": 20,
+      "color": "#ffc107"
+    },
+    {
+      "id": "面向对象编程",
+      "group": "oop",
+      "size": 25,
+      "color": "#6c757d"
+    },
+    {
+      "id": "类和对象",
+      "group": "oop",
+      "size": 15,
+      "color": "#28a745"
+    },
+    {
+      "id": "继承",
+      "group": "oop",
+      "size": 15,
+      "color": "#28a745"
+    },
+    {
+      "id": "多态",
+      "group": "oop",
+      "size": 15,
+      "color": "#28a745"
+    },
+    {
+      "id": "Web开发",
+      "group": "web",
+      "size": 25,
+      "color": "#17a2b8"
+    },
+    {
+      "id": "Flask",
+      "group": "web",
+      "size": 15,
+      "color": "#28a745"
+    },
+    {
+      "id": "Django",
+      "group": "web",
+      "size": 15,
+      "color": "#28a745"
+    }
+  ],
+  "links": [
+    {
+      "source": "Python",
+      "target": "基础语法"
+    },
+    {
+      "source": "Python",
+      "target": "面向对象编程"
+    },
+    {
+      "source": "Python",
+      "target": "Web开发"
+    },
+    {
+      "source": "基础语法",
+      "target": "数据类型"
+    },
+    {
+      "source": "基础语法",
+      "target": "控制结构"
+    },
+    {
+      "source": "基础语法",
+      "target": "函数"
+    },
+    {
+      "source": "面向对象编程",
+      "target": "类和对象"
+    },
+    {
+      "source": "面向对象编程",
+      "target": "继承"
+    },
+    {
+      "source": "面向对象编程",
+      "target": "多态"
+    },
+    {
+      "source": "Web开发",
+      "target": "Flask"
+    },
+    {
+      "source": "Web开发",
+      "target": "Django"
+    }
+  ]
+}

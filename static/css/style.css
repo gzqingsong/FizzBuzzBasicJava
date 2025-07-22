@@ -1,0 +1,204 @@
+/* 全局样式 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* 可视化容器 */
+#visualization {
+    height: 600px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 0.375rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* SVG样式 */
+.node {
+    stroke: #fff;
+    stroke-width: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.node:hover {
+    stroke-width: 3px;
+    filter: brightness(1.2);
+}
+
+.node.highlighted {
+    stroke: #ff6b6b;
+    stroke-width: 4px;
+    filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.5));
+}
+
+.link {
+    stroke: rgba(255, 255, 255, 0.4);
+    stroke-width: 1.5px;
+    transition: all 0.3s ease;
+}
+
+.link.highlighted {
+    stroke: #ff6b6b;
+    stroke-width: 3px;
+    stroke-opacity: 0.8;
+}
+
+.node-label {
+    font-size: 12px;
+    font-weight: 500;
+    fill: #fff;
+    text-anchor: middle;
+    pointer-events: none;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.node-label.large {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* 工具提示 */
+.tooltip-custom {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 13px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+    max-width: 200px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip-custom.show {
+    opacity: 1;
+}
+
+.tooltip-custom h6 {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    color: #ffd700;
+}
+
+.tooltip-custom p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+/* 卡片样式增强 */
+.card {
+    border: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0.75rem;
+}
+
+.card-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 0.75rem 0.75rem 0 0 !important;
+}
+
+/* 按钮样式增强 */
+.btn {
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 表单控件样式 */
+.form-control, .form-range {
+    border-radius: 0.5rem;
+}
+
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+/* 搜索高亮 */
+.node.search-highlight {
+    stroke: #ffd700;
+    stroke-width: 4px;
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.7));
+}
+
+/* 加载动画 */
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: white;
+    font-size: 18px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    #visualization {
+        height: 400px;
+    }
+    
+    .node-label {
+        font-size: 10px;
+    }
+    
+    .node-label.large {
+        font-size: 12px;
+    }
+}
+
+/* 上传状态样式 */
+.upload-progress {
+    margin-top: 15px;
+}
+
+.progress {
+    height: 8px;
+    border-radius: 4px;
+}
+
+/* 统计信息动画 */
+.stats-number {
+    transition: all 0.5s ease;
+}
+
+.stats-number.updated {
+    transform: scale(1.2);
+    color: #28a745 !important;
+}
+
+/* 连接线动画 */
+@keyframes linkPulse {
+    0% { stroke-opacity: 0.4; }
+    50% { stroke-opacity: 0.8; }
+    100% { stroke-opacity: 0.4; }
+}
+
+.link.animated {
+    animation: linkPulse 2s ease-in-out infinite;
+}

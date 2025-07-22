@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python 技能图谱可视化</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <header class="bg-primary text-white p-3 mb-4">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h1 class="h3 mb-0">🐍 Python 技能图谱可视化</h1>
+                    <p class="mb-0 small">交互式技能关系图谱展示</p>
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#uploadModal">
+                        📁 导入数据
+                    </button>
+                    <a href="/api/sample-excel" class="btn btn-outline-light btn-sm ms-2">
+                        📥 下载示例
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">🎛️ 控制面板</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="searchInput" class="form-label">🔍 搜索节点</label>
+                            <input type="text" class="form-control form-control-sm" id="searchInput" placeholder="输入技能名称...">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">📊 显示设置</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="showLabels" checked>
+                                <label class="form-check-label" for="showLabels">显示标签</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="showLinks" checked>
+                                <label class="form-check-label" for="showLinks">显示连线</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="forceStrength" class="form-label">🔗 连接强度</label>
+                            <input type="range" class="form-range" id="forceStrength" min="0.1" max="2" step="0.1" value="1">
+                        </div>
+
+                        <button class="btn btn-outline-primary btn-sm w-100" onclick="resetVisualization()">
+                            🔄 重置视图
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h6 class="card-title mb-0">📈 统计信息</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-6">
+                                <div class="h4 text-primary" id="nodeCount">0</div>
+                                <small class="text-muted">节点数</small>
+                            </div>
+                            <div class="col-6">
+                                <div class="h4 text-success" id="linkCount">0</div>
+                                <small class="text-muted">连接数</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="card h-100">
+                    <div class="card-body p-0">
+                        <div id="visualization" class="w-100"></div>
+                        <div id="tooltip" class="tooltip-custom"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 上传模态框 -->
+    <div class="modal fade" id="uploadModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">📁 导入数据文件</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="fileInput" class="form-label">选择文件</label>
+                        <input type="file" class="form-control" id="fileInput" accept=".xlsx,.xls,.json">
+                        <div class="form-text">支持 Excel (.xlsx, .xls) 和 JSON 文件</div>
+                    </div>
+                    
+                    <div class="alert alert-info">
+                        <h6>📋 文件格式说明：</h6>
+                        <ul class="mb-0">
+                            <li><strong>Excel文件：</strong>需包含 "nodes" 和 "links" 两个工作表</li>
+                            <li><strong>nodes表：</strong>id, group, size, color 列</li>
+                            <li><strong>links表：</strong>source, target 列</li>
+                            <li><strong>JSON文件：</strong>包含 nodes 和 links 数组</li>
+                        </ul>
+                    </div>
+                    
+                    <div id="uploadStatus" class="mt-3"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="uploadFile()">上传</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/visualization.js') }}"></script>
+</body>
+</html>
