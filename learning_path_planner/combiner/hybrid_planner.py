@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Dict, List, Tuple
 
 from learning_path_planner.data.models import StudentProfile
@@ -12,8 +12,8 @@ from learning_path_planner.rules.engine import RulesEngine, RulesConfig
 
 @dataclass
 class HybridConfig:
-    graph: PlannerConfig = PlannerConfig()
-    rules: RulesConfig = RulesConfig()
+    graph: PlannerConfig = field(default_factory=PlannerConfig)
+    rules: RulesConfig = field(default_factory=RulesConfig)
     # For future extensions, include rl weights, etc.
 
 
