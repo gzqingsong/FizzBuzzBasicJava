@@ -1,0 +1,6 @@
+# Intentionally minimal to keep the project runnable without installs.
+# Add optional packages here if you extend the project, e.g.:
+# networkx>=3.0
+# numpy>=1.26
+# pyyaml>=6.0
+

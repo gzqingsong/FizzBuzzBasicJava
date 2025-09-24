@@ -1,0 +1,16 @@
+{
+  "planner": {
+    "algorithm": "dijkstra",
+    "mastered_threshold": 0.7,
+    "weight_importance": 1.0,
+    "weight_time_cost": 1.0,
+    "weight_difficulty_cost": 0.5,
+    "weight_mastery_gap_cost": 1.0,
+    "top_k_paths": 1
+  },
+  "rules": {
+    "skip_mastered": true,
+    "high_difficulty_threshold": 0.75,
+    "max_consecutive_high_difficulty": 2
+  }
+}
