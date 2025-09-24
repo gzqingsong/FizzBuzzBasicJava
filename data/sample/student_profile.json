@@ -1,0 +1,11 @@
+{
+  "mastery": {
+    "algebra.basics": 0.8,
+    "algebra.equations": 0.4,
+    "calculus.derivatives": 0.2,
+    "calculus.integration": 0.0
+  },
+  "learning_style": "visual",
+  "cognitive_level": "intermediate",
+  "history": []
+}

@@ -1,0 +1,13 @@
+{
+  "nodes": [
+    {"node_id": "algebra.basics", "name": "Algebra Basics", "difficulty": 0.3, "importance": 0.6, "estimated_time_hours": 2.0, "tags": {"domain": "algebra"}},
+    {"node_id": "algebra.equations", "name": "Linear Equations", "difficulty": 0.4, "importance": 0.7, "estimated_time_hours": 2.5, "tags": {"domain": "algebra"}},
+    {"node_id": "calculus.derivatives", "name": "Derivatives", "difficulty": 0.6, "importance": 0.9, "estimated_time_hours": 3.0, "tags": {"domain": "calculus"}},
+    {"node_id": "calculus.integration", "name": "Integration", "difficulty": 0.7, "importance": 1.0, "estimated_time_hours": 3.5, "tags": {"domain": "calculus"}}
+  ],
+  "edges": [
+    {"source_id": "algebra.basics", "target_id": "algebra.equations", "relation_type": "prerequisite", "weight": 1.0},
+    {"source_id": "algebra.equations", "target_id": "calculus.derivatives", "relation_type": "prerequisite", "weight": 1.0},
+    {"source_id": "calculus.derivatives", "target_id": "calculus.integration", "relation_type": "prerequisite", "weight": 1.0}
+  ]
+}
